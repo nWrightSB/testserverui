@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Login from './Login'
+import Executions from './Executions'
 import './App.css';
+import './ProjectExecution.css'
+import request from 'request'
 
 class App extends Component {
   constructor(props) {
@@ -9,32 +11,74 @@ class App extends Component {
     this.state = {
       current_user: null,
       current_pw: null,
+      test_server: 'http://10.0.29.207:8088',
+      data_executions: null,
+      data_testsuite: null,
     }
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
+    this.handleProjectDetails = this.handleProjectDetails.bind(this)
   }
 
-  handleLogin() {
-    // This should handle the 'login' aspect of the platform, user enters
-    // their name and PW, it is verified against the server and stored
-    // in state to be sent in subsequent requests.
-    // >> Simpliest call to verify a user is registered w/server
-    //  >> GET /v1/readyapi/executions
-    //    >> 404 - Unauthorized user
-    //    >> 200 - Returns recent executions which will be the base
-    //             of the stats view.
+  handleProjectDetails(executionID) {
+    let projectData = JSON.parse(this.state.data_executions)
+
+    for (let i = 0; i < projectData["projectResultReports"].length; i++){
+      let current_run = projectData["projectResultReports"][i]
+      if (current_run["executionID"].toString() === executionID.toString()) {
+        this.setState({
+          data_testsuite: current_run
+        })
+        return
+      }
+    }
+  }
+
+  handleLogin(username, password) {
+    let reqObj = {
+      url: this.state.test_server + '/v1/readyapi/executions',
+      auth: {
+          'user': username,
+          'pass': password
+      }
+    };
+
+    request(reqObj, function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+          this.setState({
+            current_user: reqObj.auth.user,
+            current_pw: reqObj.auth.pass,
+            data_executions: body
+          })
+      }
+    }.bind(this));
+  }
+
+  handleLogout() {
+    this.setState({
+      current_user: null,
+      current_pw: null,
+      data_executions: null
+    })
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">test_server_UI</h1>
+          <h1 className="App-title">test_serverUI</h1>
+          <Login
+            current_user={this.state.current_user}
+            current_pw={this.state.current_pw}
+            handleLogin={this.handleLogin}
+            handleLogout={this.handleLogout}
+          />
         </header>
-        <Login
-          current_user={this.state.current_user}
-          current_pw={this.state.current_pw}
-          handleLogin={this.handleLogin}
+        <br />
+        <Executions
+          data_executions={this.state.data_executions}
+          data_testsuite={this.state.data_testsuite}
+          handleProjectDetails={this.handleProjectDetails}
         />
       </div>
     );
