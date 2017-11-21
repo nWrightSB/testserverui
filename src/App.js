@@ -3,6 +3,7 @@ import Login from './Login'
 import Executions from './Executions'
 import './App.css';
 import './ProjectExecution.css'
+import './TestSuiteExecution.css'
 import request from 'request'
 
 class App extends Component {
@@ -66,7 +67,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">test_serverUI</h1>
+          <h1 className="App-title">ts_UI</h1>
           <Login
             current_user={this.state.current_user}
             current_pw={this.state.current_pw}

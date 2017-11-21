@@ -24,11 +24,11 @@ const Executions = props => {
   return (
     <div className="executions-container">
       <div className="projects-data">
-        <h3>PROJECT</h3>
+        <h3>RUNS</h3>
         {projectResultReports}
       </div>
       <div className="testsuite-data">
-        <h3>TEST SUITES</h3>
+        <h3>PROJECT</h3>
         <TestSuiteExecution
           data_testsuite={data_testsuite}
         />

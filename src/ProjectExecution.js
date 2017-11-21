@@ -28,12 +28,11 @@ const ProjectExecution = props => {
         <h1>{status}</h1>
       </div>
       <div className="project-details">
-        <h3>Project:</h3>
-        <h2>{project_name}</h2>
-        <br />
-        <h3>Start Time:</h3>
-        <h2>{start_time.getHours().toString() + ":" + start_time.getMinutes().toString()}</h2>
-        <h4>Details  <i className="fa fa-arrow-circle-o-right" aria-hidden="true"></i></h4>
+        <h3>Project: <b>{project_name}</b></h3>
+        <h3>Start Time: <b>{start_time.getHours().toString() + ":" + start_time.getMinutes().toString()}</b></h3>
+      </div>
+      <div className="details-bar">
+        <h4>DETAILS  <i className="fa fa-arrow-circle-o-right" aria-hidden="true"></i></h4>
       </div>
     </div>
   )
