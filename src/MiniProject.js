@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProjectExecution = props => {
+const MiniProject = props => {
   let parsed_project_data = ""
   let project_name = ""
   let executionID = ""
@@ -38,4 +38,4 @@ const ProjectExecution = props => {
   )
 }
 
-export default ProjectExecution;
+export default MiniProject;

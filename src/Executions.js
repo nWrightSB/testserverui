@@ -1,9 +1,11 @@
 import React from 'react';
-import ProjectExecution from './ProjectExecution'
-import TestSuiteExecution from './TestSuiteExecution'
+import MiniProject from './MiniProject'
+import Project from './Project'
+import TestSuite from './TestSuite'
 
 const Executions = props => {
   let projectResultReports = []
+  let data_project = props.data_project
   let data_testsuite = props.data_testsuite
 
   if (props.data_executions != null) {
@@ -12,7 +14,7 @@ const Executions = props => {
     for (let i = 0; i < 10; i++) {
       let single_exec = parsed_data_executions['projectResultReports'][i]
       projectResultReports.push(
-        <ProjectExecution
+        <MiniProject
           project_data={single_exec}
           key={i}
           handleProjectDetails={props.handleProjectDetails}
@@ -29,7 +31,12 @@ const Executions = props => {
       </div>
       <div className="testsuite-data">
         <h3>PROJECT</h3>
-        <TestSuiteExecution
+        <Project
+          data_project={data_project}
+          handleTestSuiteDetails={props.handleTestSuiteDetails}
+        />
+        <h3>TEST STEPS</h3>
+        <TestSuite
           data_testsuite={data_testsuite}
         />
       </div>

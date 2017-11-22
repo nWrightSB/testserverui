@@ -74,8 +74,8 @@
   background-color: #F9F9F9;
   color: black;
   padding: 2px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  /*border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;*/
   cursor: pointer;
 }
 
@@ -86,14 +86,14 @@
 
 .failed {
   background-color: #FF4136;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  /*border-top-left-radius: 5px;
+  border-top-right-radius: 5px;*/
   letter-spacing: 3px;
 }
 
 .success {
   letter-spacing: 3px;
   background-color: #2ECC40;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  /*border-top-left-radius: 5px;
+  border-top-right-radius: 5px;*/
 }
