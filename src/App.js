@@ -10,17 +10,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // USER AND SESSION VALUES
       current_user: null,
       current_pw: null,
       test_server: 'http://10.0.29.207:8088',
+      // VIEW DATA
       data_executions: null,
       data_project: null,
-      data_testsuite: null
+      data_testsuite: null,
+      data_testcase: null,
+      data_teststep: null
     }
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
     this.handleProjectDetails = this.handleProjectDetails.bind(this)
     this.handleTestSuiteDetails = this.handleTestSuiteDetails.bind(this)
+    this.handleTestCaseDetails = this.handleTestCaseDetails.bind(this)
+    this.handleTestStepDetails = this.handleTestStepDetails.bind(this)
   }
 
   handleProjectDetails(executionID) {
@@ -31,9 +37,9 @@ class App extends Component {
       if (current_run["executionID"].toString() === executionID.toString()) {
         this.setState({
           data_project: current_run,
-          data_testsuite: null
+          data_testsuite: null,
+          data_testcase: null
         })
-        return
       }
     }
   }
@@ -54,6 +60,14 @@ class App extends Component {
         }
       }
     }
+  }
+
+  handleTestCaseDetails(executionID, testsuite_name, testcase_name){
+    console.log(executionID + testsuite_name + testcase_name)
+  }
+
+  handleTestStepDetails(teststep_name){
+    console.log(teststep_name)
   }
 
   handleLogin(username, password) {
@@ -101,8 +115,12 @@ class App extends Component {
           data_executions={this.state.data_executions}
           data_project={this.state.data_project}
           data_testsuite={this.state.data_testsuite}
+          data_testcase={this.state.data_testcase}
+          data_teststep={this.state.data_teststep}
           handleProjectDetails={this.handleProjectDetails}
           handleTestSuiteDetails={this.handleTestSuiteDetails}
+          handleTestCaseDetails={this.handleTestCaseDetails}
+          handleTestStepDetails={this.handleTestStepDetails}
         />
       </div>
     );

@@ -28,11 +28,10 @@
 }
 
 .mini-testsuite-container {
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.2);
+  background-color: lightblue;
+  /*box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.2);*/
   margin: 10px;
-  border-radius: 5px;
-  background-color: #F9F9F9;
+  /*border-radius: 5px;*/
   margin-bottom: 20px;
   cursor: pointer;
 }

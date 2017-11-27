@@ -2,11 +2,13 @@ import React from 'react';
 import MiniProject from './MiniProject'
 import Project from './Project'
 import TestSuite from './TestSuite'
+import TestCase from './TestCase'
 
 const Executions = props => {
   let projectResultReports = []
   let data_project = props.data_project
   let data_testsuite = props.data_testsuite
+  let data_testcase = props.data_testcase
 
   if (props.data_executions != null) {
     let parsed_data_executions = JSON.parse(props.data_executions)
@@ -35,9 +37,12 @@ const Executions = props => {
           data_project={data_project}
           handleTestSuiteDetails={props.handleTestSuiteDetails}
         />
-        <h3>TEST STEPS</h3>
         <TestSuite
           data_testsuite={data_testsuite}
+          handleTestCaseDetails={props.handleTestCaseDetails}
+        />
+        <TestCase
+          data_testcase={data_testcase}
         />
       </div>
       <div className="teststep-data">

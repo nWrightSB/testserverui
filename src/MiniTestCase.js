@@ -1,7 +1,6 @@
 import React from 'react';
-import TestStep from './TestStep'
 
-const TestCase = props => {
+const MiniTestCase = props => {
   let data_testcase = props.data_testcase
   let testcase_name = null
 
@@ -26,4 +25,4 @@ const TestCase = props => {
   )
 }
 
-export default TestCase;
+export default MiniTestCase;
