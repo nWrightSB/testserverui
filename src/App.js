@@ -17,6 +17,7 @@ class App extends Component {
       // VIEW DATA
       data_executions: null,
       data_project: null,
+      data_executionID: null,
       data_testsuite: null,
       data_testcase: null,
       data_teststep: null
@@ -54,7 +55,9 @@ class App extends Component {
             let current_testsuite_run = current_project_run["testSuiteResultReports"][n]
             if (current_testsuite_run["testSuiteName"] === testsuite_name) {
               this.setState({
-                data_testsuite: current_testsuite_run
+                data_testsuite: current_testsuite_run,
+                data_executionID: executionID,
+                data_testcase: null
               })
             }
         }
@@ -63,7 +66,16 @@ class App extends Component {
   }
 
   handleTestCaseDetails(executionID, testsuite_name, testcase_name){
-    console.log(executionID + testsuite_name + testcase_name)
+    let data_testsuite = this.state.data_testsuite
+
+    for (let i = 0; i < data_testsuite["testCaseResultReports"].length; i++) {
+      let current_testcase = data_testsuite["testCaseResultReports"][i]
+      if (testcase_name === current_testcase["testCaseName"]) {
+        this.setState({
+          data_testcase: current_testcase
+        })
+      }
+    }
   }
 
   handleTestStepDetails(teststep_name){
@@ -94,7 +106,12 @@ class App extends Component {
     this.setState({
       current_user: null,
       current_pw: null,
-      data_executions: null
+      data_executions: null,
+      data_project: null,
+      data_executionID: null,
+      data_testsuite: null,
+      data_testcase: null,
+      data_teststep: null
     })
   }
 
@@ -115,6 +132,7 @@ class App extends Component {
           data_executions={this.state.data_executions}
           data_project={this.state.data_project}
           data_testsuite={this.state.data_testsuite}
+          data_executionID={this.state.data_executionID}
           data_testcase={this.state.data_testcase}
           data_teststep={this.state.data_teststep}
           handleProjectDetails={this.handleProjectDetails}

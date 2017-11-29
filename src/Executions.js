@@ -39,10 +39,12 @@ const Executions = props => {
         />
         <TestSuite
           data_testsuite={data_testsuite}
+          data_executionID={props.data_executionID}
           handleTestCaseDetails={props.handleTestCaseDetails}
         />
         <TestCase
           data_testcase={data_testcase}
+          handleTestStepDetails={props.handleTestStepDetails}
         />
       </div>
       <div className="teststep-data">

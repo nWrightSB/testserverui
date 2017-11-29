@@ -1,4 +1,5 @@
 import React from 'react';
+import MiniTestCase from './MiniTestCase.js'
 
 const TestSuite = props => {
   let data_testsuite = props.data_testsuite
@@ -7,13 +8,23 @@ const TestSuite = props => {
 
   if (data_testsuite) {
     testsuite_name = data_testsuite["testSuiteName"]
+
     for (let i = 0; i < data_testsuite["testCaseResultReports"].length; i++) {
-      testcases.push(data_testsuite["testCaseResultReports"][i]["testCaseName"])
+      testcases.push(
+        <MiniTestCase
+          key={i}
+          data_testcase={data_testsuite["testCaseResultReports"][i]}
+          testsuite_name={testsuite_name}
+          executionID={props.data_executionID}
+          handleTestCaseDetails={props.handleTestCaseDetails}
+        />
+      )
     }
   }
 
   return (
-    <div className="">
+    <div className="testcase-container">
+      <h4>Test Cases:</h4>
       {testcases}
     </div>
   )

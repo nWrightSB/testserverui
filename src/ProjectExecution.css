@@ -9,12 +9,14 @@
   width: 30vw;
   /*border-right: 1px solid lightgrey;*/
   max-height: 90vh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .testsuite-data {
   background-color: white;
   width: 30vw;
+  overflow: auto;
+  max-height: 90vh;
 }
 
 .teststep-data {
@@ -82,18 +84,4 @@
 .details-bar h4 {
   letter-spacing: 2px;
   margin: 0;
-}
-
-.failed {
-  background-color: #FF4136;
-  /*border-top-left-radius: 5px;
-  border-top-right-radius: 5px;*/
-  letter-spacing: 3px;
-}
-
-.success {
-  letter-spacing: 3px;
-  background-color: #2ECC40;
-  /*border-top-left-radius: 5px;
-  border-top-right-radius: 5px;*/
 }

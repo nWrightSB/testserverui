@@ -9,16 +9,25 @@ const Project = props => {
   let executionID = null
   let timeTaken = null
   let startTime = null
+  let start_time = null
+  let customClass = "project-container-header"
   // TESTSUITE DATA
   let test_suites = []
 
   if (props.data_project != null) {
     parsed_project_data = props.data_project
-    project_name = parsed_project_data["projectName"]
     project_status = parsed_project_data["status"]
     executionID = parsed_project_data["executionID"]
-    timeTaken = parsed_project_data["timeTaken"]/1000
-    startTime = parsed_project_data["startTime"]
+    timeTaken = parsed_project_data["timeTaken"]/1000 + " seconds"
+    startTime = new Date(parsed_project_data["startTime"])
+    start_time = startTime.getHours().toString() + ":" + startTime.getMinutes().toString()
+    project_name = parsed_project_data["projectName"]
+
+    if (project_status === "FAILED") {
+      customClass += " failed"
+    } else {
+      customClass += " success"
+    }
 
     for (let i = 0; i < parsed_project_data["testSuiteResultReports"].length; i++) {
       test_suites.push(
@@ -31,24 +40,31 @@ const Project = props => {
       )
     }
   }
+  // PROJECT RUN DETAILS - TO BE SHOWN ON BUTTON CLICK
+  // <h4>
+  // Execution ID:
+  // <br />
+  // {executionID}
+  // <br />
+  // <br />
+  // Start Time:
+  // <br />
+  // {start_time}
+  // <br />
+  // <br />
+  // Completed In:
+  // <br/>
+  // {timeTaken}
+  // </h4>
 
   return (
     <div className="project-container">
-      <div className="project-container-header">
+      <div className={customClass}>
         <h3>{project_name}</h3>
-        <h4>
-          Execution ID:
-          <br />
-          {executionID}
-          <br />
-          <br />
-          Completed In:
-          <br/>
-          {timeTaken} seconds
-        </h4>
+        <h4>{project_status}</h4>
       </div>
       <div className="project-table">
-        <h4>Test Suites:</h4>
+        <h3>TEST SUITES</h3>
         {test_suites}
       </div>
     </div>

@@ -5,7 +5,7 @@ const TestStep = props => {
   let teststep_name = data_teststep["testStepName"]
 
   return (
-    <div className="">
+    <div className="teststep" onClick={() => props.handleTestStepDetails(teststep_name)}>
       <h2>{teststep_name}</h2>
     </div>
   )
