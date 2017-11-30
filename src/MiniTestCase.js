@@ -5,7 +5,6 @@ const MiniTestCase = props => {
   let testcase_name = null
   let executionID = null
   let testsuite_name = null
-  let testsuite_header = "mini-testsuite-container success"
   let customClass = "testsuite-checkmark-container success"
   let customIcon = "fa fa-check-circle fa-lg"
   let assertionStatus = null

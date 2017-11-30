@@ -8,7 +8,6 @@ const Project = props => {
   let project_status = null
   let executionID = null
   let timeTaken = null
-  let startTime = null
   let start_time = null
   let customClass = "project-container-header"
   // TESTSUITE DATA
@@ -19,7 +18,7 @@ const Project = props => {
     project_status = parsed_project_data["status"]
     executionID = parsed_project_data["executionID"]
     timeTaken = parsed_project_data["timeTaken"]/1000 + " seconds"
-    startTime = new Date(parsed_project_data["startTime"])
+    let startTime = new Date(parsed_project_data["startTime"])
     start_time = startTime.getHours().toString() + ":" + startTime.getMinutes().toString()
     project_name = parsed_project_data["projectName"]
 

@@ -4,9 +4,8 @@ import MiniTestCase from './MiniTestCase.js'
 const TestSuite = props => {
   let data_testsuite = props.data_testsuite
   let testsuite_name = null
-  let testsuite_status = null
   let testcases = []
-  let customClass = "project-container-header"
+  let customClass = "project-container-header success"
   let assertionStatus = null
 
   if (data_testsuite) {
@@ -18,11 +17,7 @@ const TestSuite = props => {
       for (let n = 0; n < currentTestCase.length; n++){
         assertionStatus = currentTestCase[n]["assertionStatus"]
         if (assertionStatus === "FAILED") {
-          customClass += " failed"
-        }
-
-        if (assertionStatus === "OK"){
-          customClass += " success"
+          customClass = "project-container-header failed"
         }
       }
 

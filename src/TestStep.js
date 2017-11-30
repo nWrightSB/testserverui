@@ -2,11 +2,25 @@ import React from 'react';
 
 const TestStep = props => {
   let data_teststep = props.data_teststep
-  let teststep_name = data_teststep["testStepName"]
+  let teststep_name = data_teststep["testStepName"];
+  let customClass = "testsuite-checkmark-container success"
+  let customIcon = "fa fa-check-circle fa-lg"
+  let assertionStatus = props.assertionStatus
+  let transactionID = data_teststep["transactionId"]
+
+  if (assertionStatus === "FAILED") {
+    customClass = "testsuite-checkmark-container failed"
+    customIcon = "fa fa-times-circle fa-lg"
+  }
 
   return (
-    <div className="teststep" onClick={() => props.handleTestStepDetails(teststep_name)}>
-      <h2>{teststep_name}</h2>
+    <div className="mini-testsuite-container" onClick={() => props.handleTestStepDetails(teststep_name, transactionID)}>
+      <div className={customClass}>
+        <i className={customIcon} aria-hidden="true"></i>
+      </div>
+      <div className="testsuite-name-container">
+        <h4>{teststep_name}</h4>
+      </div>
     </div>
   )
 }
