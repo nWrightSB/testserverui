@@ -78,8 +78,8 @@ class App extends Component {
     }
   }
 
-  handleTestStepDetails(teststep_name){
-    console.log(teststep_name)
+  handleTestStepDetails(teststep_name, transactionID){
+    console.log(transactionID)
   }
 
   handleLogin(username, password) {
