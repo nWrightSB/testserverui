@@ -6,7 +6,7 @@
 
 .projects-data {
   background-color: white;
-  width: 30vw;
+  width: 20vw;
   /*border-right: 1px solid lightgrey;*/
   max-height: 90vh;
   overflow: auto;
@@ -14,14 +14,14 @@
 
 .testsuite-data {
   background-color: white;
-  width: 30vw;
+  width: 20vw;
   overflow: auto;
   max-height: 90vh;
 }
 
 .teststep-data {
   background-color: white;
-  width: 30vw;
+  width: 60vw;
 }
 
 .project-execution-container {

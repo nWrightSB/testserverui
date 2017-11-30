@@ -20,11 +20,13 @@ const Login = props => {
                         // document.getElementById('password').value
                       )
                       } id="login">
+                      Login
                       <i className="fa fa-sign-in" aria-hidden="true"></i>
                     </button>
   } else {
     status = 'Logged In As:' + current_user
     login_button = <button onClick={() => props.handleLogout()} id="logout">
+                      Logout
                       <i className="fa fa-sign-out" aria-hidden="true"></i>
                     </button>
   }

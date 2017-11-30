@@ -5,16 +5,31 @@ const MiniTestCase = props => {
   let testcase_name = null
   let executionID = null
   let testsuite_name = null
+  let testsuite_header = "mini-testsuite-container success"
+  let customClass = "testsuite-checkmark-container success"
+  let customIcon = "fa fa-check-circle fa-lg"
+  let assertionStatus = null
 
   if (data_testcase) {
     testcase_name = data_testcase["testCaseName"]
     testsuite_name = props.testsuite_name
     executionID = props.executionID
+    assertionStatus = props.assertionStatus
+
+    if (assertionStatus === "FAILED") {
+      customClass = "testsuite-checkmark-container failed"
+      customIcon = "fa fa-times-circle fa-lg"
+    }
   }
 
   return (
-    <div className="mini-testcase" onClick={() => props.handleTestCaseDetails(executionID, testsuite_name, testcase_name)}>
-      <h2>{testcase_name}</h2>
+    <div className="mini-testsuite-container" onClick={() => props.handleTestCaseDetails(executionID, testsuite_name, testcase_name)}>
+      <div className={customClass}>
+        <i className={customIcon} aria-hidden="true"></i>
+      </div>
+      <div className="testsuite-name-container">
+        <h4>{testcase_name}</h4>
+      </div>
     </div>
   )
 }

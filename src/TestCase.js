@@ -3,6 +3,7 @@ import TestStep from './TestStep'
 
 const TestCase = props => {
   let data_testcase = props.data_testcase
+  let testcase_name = data_testcase["testCaseName"]
   let teststeps = []
 
   if (data_testcase) {
@@ -21,7 +22,7 @@ const TestCase = props => {
 
   return (
     <div className="teststep-container">
-      <h4>Test Steps:</h4>
+      <h4>{testcase_name}</h4>
       {teststeps}
     </div>
   )

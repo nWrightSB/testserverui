@@ -6,6 +6,9 @@ import TestCase from './TestCase'
 
 const Executions = props => {
   let projectResultReports = []
+  let project_comp = null
+  let testsuite_comp = null
+  let testcase_comp = null
   let data_project = props.data_project
   let data_testsuite = props.data_testsuite
   let data_testcase = props.data_testcase
@@ -25,30 +28,39 @@ const Executions = props => {
     }
   }
 
+  if (data_project != null) {
+    project_comp = <Project
+                      data_project={data_project}
+                      handleTestSuiteDetails={props.handleTestSuiteDetails}
+                    />
+  }
+
+  if (data_testsuite != null) {
+    testsuite_comp = <TestSuite
+                          data_testsuite={data_testsuite}
+                          data_executionID={props.data_executionID}
+                          handleTestCaseDetails={props.handleTestCaseDetails}
+                        />
+  }
+
+  if (data_testcase != null) {
+    testcase_comp = <TestCase
+                        data_testcase={data_testcase}
+                        handleTestStepDetails={props.handleTestStepDetails}
+                      />
+  }
+
   return (
     <div className="executions-container">
       <div className="projects-data">
-        <h3>RUNS</h3>
         {projectResultReports}
       </div>
       <div className="testsuite-data">
-        <h3>PROJECT</h3>
-        <Project
-          data_project={data_project}
-          handleTestSuiteDetails={props.handleTestSuiteDetails}
-        />
-        <TestSuite
-          data_testsuite={data_testsuite}
-          data_executionID={props.data_executionID}
-          handleTestCaseDetails={props.handleTestCaseDetails}
-        />
-        <TestCase
-          data_testcase={data_testcase}
-          handleTestStepDetails={props.handleTestStepDetails}
-        />
+        {project_comp}
+        {testsuite_comp}
+        {testcase_comp}
       </div>
       <div className="teststep-data">
-        <h3>DETAILS</h3>
       </div>
     </div>
   )
