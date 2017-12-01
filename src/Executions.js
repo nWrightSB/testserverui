@@ -3,6 +3,7 @@ import MiniProject from './MiniProject'
 import Project from './Project'
 import TestSuite from './TestSuite'
 import TestCase from './TestCase'
+import Pretty from './Pretty'
 
 const Executions = props => {
   let projectResultReports = []
@@ -12,6 +13,8 @@ const Executions = props => {
   let data_project = props.data_project
   let data_testsuite = props.data_testsuite
   let data_testcase = props.data_testcase
+  let data_teststep = props.data_teststep
+  let request_comp = null
 
   if (props.data_executions != null) {
     let parsed_data_executions = JSON.parse(props.data_executions)
@@ -50,6 +53,13 @@ const Executions = props => {
                       />
   }
 
+  if (data_teststep != null) {
+    let data_request = JSON.parse(data_teststep)
+    request_comp = <Pretty
+                        data_request={data_request}
+                      />
+  }
+
   return (
     <div className="executions-container">
       <div className="projects-data">
@@ -61,6 +71,7 @@ const Executions = props => {
         {testcase_comp}
       </div>
       <div className="teststep-data">
+        {request_comp}
       </div>
     </div>
   )

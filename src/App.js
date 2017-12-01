@@ -72,14 +72,29 @@ class App extends Component {
       let current_testcase = data_testsuite["testCaseResultReports"][i]
       if (testcase_name === current_testcase["testCaseName"]) {
         this.setState({
-          data_testcase: current_testcase
+          data_testcase: current_testcase,
+          data_executionID: executionID
         })
       }
     }
   }
 
   handleTestStepDetails(teststep_name, transactionID){
-    console.log(transactionID)
+    let reqObj = {
+      url: this.state.test_server + '/v1/readyapi/executions/' + this.state.data_executionID + "/transactions/" + transactionID,
+      auth: {
+          'user': this.state.current_user,
+          'pass': this.state.current_pw
+      }
+    };
+
+    request(reqObj, function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+          this.setState({
+            data_teststep: body
+          })
+      }
+    }.bind(this));
   }
 
   handleLogin(username, password) {

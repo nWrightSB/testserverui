@@ -1,0 +1,7 @@
+.pre {
+  height: 85vh;
+  padding: 10px 30px;
+  margin: 0;
+  text-align: left;
+  overflow-y: scroll;
+}

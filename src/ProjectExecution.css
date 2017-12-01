@@ -20,6 +20,7 @@
 }
 
 .teststep-data {
+  height: 100vh;
   background-color: white;
   width: 60vw;
 }
