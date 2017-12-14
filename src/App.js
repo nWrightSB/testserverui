@@ -135,7 +135,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">ts_UI</h1>
-          <h2>view</h2>
+          <h2>history</h2>
+          <h2>current</h2>
           <h2>run</h2>
           <Login
             current_user={this.state.current_user}
