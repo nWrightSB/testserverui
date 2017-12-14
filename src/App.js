@@ -39,7 +39,8 @@ class App extends Component {
         this.setState({
           data_project: current_run,
           data_testsuite: null,
-          data_testcase: null
+          data_testcase: null,
+          data_teststep: null
         })
       }
     }
@@ -57,7 +58,8 @@ class App extends Component {
               this.setState({
                 data_testsuite: current_testsuite_run,
                 data_executionID: executionID,
-                data_testcase: null
+                data_testcase: null,
+                data_teststep: null
               })
             }
         }
@@ -73,7 +75,8 @@ class App extends Component {
       if (testcase_name === current_testcase["testCaseName"]) {
         this.setState({
           data_testcase: current_testcase,
-          data_executionID: executionID
+          data_executionID: executionID,
+          data_teststep: null
         })
       }
     }
@@ -135,8 +138,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">ts_UI</h1>
-          <h2>history</h2>
-          <h2>current</h2>
+          <h2>analyze</h2>
+          <h2>state</h2>
           <h2>run</h2>
           <Login
             current_user={this.state.current_user}
