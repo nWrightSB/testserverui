@@ -20,7 +20,8 @@ class App extends Component {
       data_executionID: null,
       data_testsuite: null,
       data_testcase: null,
-      data_teststep: null
+      data_teststep: null,
+      data_messages: null
     }
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
@@ -40,7 +41,8 @@ class App extends Component {
           data_project: current_run,
           data_testsuite: null,
           data_testcase: null,
-          data_teststep: null
+          data_teststep: null,
+          data_messages: null
         })
       }
     }
@@ -59,7 +61,8 @@ class App extends Component {
                 data_testsuite: current_testsuite_run,
                 data_executionID: executionID,
                 data_testcase: null,
-                data_teststep: null
+                data_teststep: null,
+                data_messages: null
               })
             }
         }
@@ -82,7 +85,7 @@ class App extends Component {
     }
   }
 
-  handleTestStepDetails(teststep_name, transactionID){
+  handleTestStepDetails(teststep_name, transactionID, messages){
     let reqObj = {
       url: this.state.test_server + '/v1/readyapi/executions/' + this.state.data_executionID + "/transactions/" + transactionID,
       auth: {
@@ -94,7 +97,8 @@ class App extends Component {
     request(reqObj, function(error, response, body) {
       if (!error && response.statusCode === 200) {
           this.setState({
-            data_teststep: body
+            data_teststep: body,
+            data_messages: messages
           })
       }
     }.bind(this));
@@ -156,6 +160,7 @@ class App extends Component {
           data_executionID={this.state.data_executionID}
           data_testcase={this.state.data_testcase}
           data_teststep={this.state.data_teststep}
+          data_messages={this.state.data_messages}
           handleProjectDetails={this.handleProjectDetails}
           handleTestSuiteDetails={this.handleTestSuiteDetails}
           handleTestCaseDetails={this.handleTestCaseDetails}

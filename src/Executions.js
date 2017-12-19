@@ -3,7 +3,7 @@ import MiniProject from './MiniProject'
 import Project from './Project'
 import TestSuite from './TestSuite'
 import TestCase from './TestCase'
-import PrettyData from './PrettyData'
+import RequestResponse from './RequestResponse'
 
 const Executions = props => {
   let projectResultReports = []
@@ -55,8 +55,9 @@ const Executions = props => {
 
   if (data_teststep != null) {
     let data_request = JSON.parse(data_teststep)
-    response_comp = <PrettyData
+    response_comp = <RequestResponse
                         data_request={data_request}
+                        messages={props.data_messages}
                       />
   }
 

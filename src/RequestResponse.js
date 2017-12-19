@@ -1,19 +1,32 @@
 import React from 'react';
-import './Pretty.css'
+import ErrorMessage from './ErrorMessage'
+import './RequestResponse.css'
 
-const PrettyData = props => {
+const RequestResponse = props => {
   let to_pretty = props.data_request
+  let data_messages = props.messages
+  let messages = []
+
+  for (let i = 0; i < data_messages.length; i++) {
+    let message = data_messages[i]
+    messages.push(
+      <ErrorMessage
+        key={i}
+        message={message}
+      />
+    )
+  }
+
+  console.log(to_pretty)
   // REQUEST
   let request = to_pretty["log"]["entries"][0]["request"]
   let method = request["method"]
   let url = request["url"]
   // RESPONSE
   let response = to_pretty["log"]["entries"][0]["response"]["content"]["text"]
-  console.log(to_pretty)
 
   // {to_pretty.log.entries[0].request}
   // {to_pretty["log"]["entries"][0]["response"]["content"]["text"]}
-
   return (
     <div className="data-container">
       <div className="request-data">
@@ -24,11 +37,15 @@ const PrettyData = props => {
           {url}
         </div>
       </div>
-      <pre className="response-data">
-        {response}
-      </pre>
+      <div className="response-data">
+        {messages}
+        <pre>
+          {response}
+        </pre>
+      </div>
+
     </div>
   )
 }
 
-export default PrettyData;
+export default RequestResponse;

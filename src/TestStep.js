@@ -7,14 +7,16 @@ const TestStep = props => {
   let customIcon = "fa fa-check-circle fa-lg"
   let assertionStatus = props.assertionStatus
   let transactionID = data_teststep["transactionId"]
+  let messages = ""
 
   if (assertionStatus === "FAILED") {
     customClass = "testsuite-checkmark-container failed"
     customIcon = "fa fa-times-circle fa-lg"
+    messages = data_teststep["messages"]
   }
 
   return (
-    <div className="mini-testsuite-container" onClick={() => props.handleTestStepDetails(teststep_name, transactionID)}>
+    <div className="mini-testsuite-container" onClick={() => props.handleTestStepDetails(teststep_name, transactionID, messages)}>
       <div className={customClass}>
         <i className={customIcon} aria-hidden="true"></i>
       </div>
