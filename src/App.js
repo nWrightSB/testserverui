@@ -13,7 +13,7 @@ class App extends Component {
       // USER AND SESSION VALUES
       current_user: null,
       current_pw: null,
-      test_server: 'http://10.0.29.207:8088',
+      test_server: 'http://10.0.30.175:8080',
       // VIEW DATA
       data_executions: null,
       data_project: null,
