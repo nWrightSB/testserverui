@@ -13,12 +13,15 @@ const MiniTestCase = props => {
     testcase_name = data_testcase["testCaseName"]
     testsuite_name = props.testsuite_name
     executionID = props.executionID
-    assertionStatus = props.assertionStatus
-
-    if (assertionStatus === "FAILED") {
-      customIconClass = "testsuite-checkmark-container failed"
-      customIcon = "fa fa-times-circle fa-lg"
+    
+    for (let i = 0; i < data_testcase["testStepResultReports"].length; i++) {
+      let current_status = data_testcase["testStepResultReports"][i]["assertionStatus"]
+      if (current_status === "FAILED") {
+        customIconClass = "testsuite-checkmark-container failed"
+        customIcon = "fa fa-times-circle fa-lg"
+      }
     }
+    
   }
 
   return (

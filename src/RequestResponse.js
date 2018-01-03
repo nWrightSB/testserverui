@@ -6,6 +6,7 @@ const RequestResponse = props => {
   let to_pretty = props.data_request
   let data_messages = props.messages
   let messages = []
+  let response = ""
 
   for (let i = 0; i < data_messages.length; i++) {
     let message = data_messages[i]
@@ -17,14 +18,17 @@ const RequestResponse = props => {
     )
   }
 
-  console.log(to_pretty)
   // REQUEST
   let request = to_pretty["log"]["entries"][0]["request"]
   let method = request["method"]
   let url = request["url"]
   // RESPONSE
-  let response = to_pretty["log"]["entries"][0]["response"]["content"]["text"]
-
+  if (to_pretty["log"]["entries"][0]["response"] === undefined) {
+    response = ""
+  } else {
+    response = to_pretty["log"]["entries"][0]["response"]["content"]["text"]
+  }
+  
   // {to_pretty.log.entries[0].request}
   // {to_pretty["log"]["entries"][0]["response"]["content"]["text"]}
   return (

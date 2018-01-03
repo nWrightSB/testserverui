@@ -10,12 +10,14 @@
   width: 20vw;
   /*border-right: 1px solid lightgrey;*/
   overflow: auto;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .testsuite-data {
   background-color: white;
   width: 20vw;
   overflow: auto;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .teststep-data {

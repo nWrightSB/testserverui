@@ -142,7 +142,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">ts_UI</h1>
-          <h2>analyze</h2>
+          <h2>executions</h2>
           <h2>state</h2>
           <h2>run</h2>
           <Login

@@ -8,7 +8,6 @@ const Project = props => {
   let project_status = null
   let executionID = null
   let timeTaken = null
-  let start_time = null
   let customClass = "project-container-header"
   // TESTSUITE DATA
   let test_suites = []
@@ -18,8 +17,6 @@ const Project = props => {
     project_status = parsed_project_data["status"]
     executionID = parsed_project_data["executionID"]
     timeTaken = parsed_project_data["timeTaken"]/1000 + " seconds"
-    let startTime = new Date(parsed_project_data["startTime"])
-    start_time = startTime.getHours().toString() + ":" + startTime.getMinutes().toString()
     project_name = parsed_project_data["projectName"]
 
     if (project_status === "FAILED") {
@@ -61,6 +58,7 @@ const Project = props => {
       <div className={customClass}>
         <h3>{project_name}</h3>
         <h4>{project_status}</h4>
+        <h5>Completed In: {timeTaken}</h5>
       </div>
       <div className="project-table">
         <h3>TEST SUITES</h3>
