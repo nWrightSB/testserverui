@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './Login'
 import Executions from './Executions'
+import Navigation from './Navigation'
 import './App.css';
 import './ProjectExecution.css'
 import './TestSuiteExecution.css'
@@ -141,10 +142,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">ts_UI</h1>
-          <h2>executions</h2>
-          <h2>state</h2>
-          <h2>run</h2>
+          <Navigation 
+            app_name={"ts_ui"}
+          />
           <Login
             current_user={this.state.current_user}
             current_pw={this.state.current_pw}
