@@ -15,7 +15,7 @@ const Login = props => {
               <input type="password" id="password"></input>
             </form>
     login_button = <button onClick={() => props.handleLogin(
-                      "Temil", "soapui123"
+                      "defaultUser", "newPass"
                         // document.getElementById('username').value,
                         // document.getElementById('password').value
                       )

@@ -6,7 +6,7 @@ const MiniProject = props => {
   let executionID = ""
   let status = ""
   let customClass = "project-status"
-  let start_time = null
+  let start_time = ""
 
   if (props.project_data != null) {
     parsed_project_data = props.project_data
@@ -14,6 +14,7 @@ const MiniProject = props => {
     status = parsed_project_data["status"]
     executionID = parsed_project_data["executionID"]
     start_time = new Date(parsed_project_data["startTime"]*1000)
+    // FORMAT HOURS AND MINUTES HERE INSTEAD OF INLINE OF VIEW  
   }
 
   if (status === "FAILED") {
@@ -29,7 +30,7 @@ const MiniProject = props => {
       </div>
       <div className="project-details">
         <h3>Project: <b>{project_name}</b></h3>
-        <h3>Start Time: <b>{start_time.getHours().toString() + ":" + start_time.getMinutes().toString()}</b></h3>
+        <h3>Start Time: REPLACE ME</h3>
       </div>
       <div className="details-bar">
         <h4>DETAILS  <i className="fa fa-arrow-circle-o-right" aria-hidden="true"></i></h4>

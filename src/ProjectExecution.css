@@ -2,13 +2,13 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  max-height: 85vh;
 }
 
 .projects-data {
   background-color: white;
   width: 20vw;
   /*border-right: 1px solid lightgrey;*/
-  max-height: 90vh;
   overflow: auto;
 }
 
@@ -16,17 +16,17 @@
   background-color: white;
   width: 20vw;
   overflow: auto;
-  max-height: 90vh;
 }
 
 .teststep-data {
   background-color: white;
   width: 60vw;
+  padding: 10px;
 }
 
 .project-execution-container {
   font-size: .75em;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.2);
   margin: 10px;
   border-radius: 5px;
   background-color: white;

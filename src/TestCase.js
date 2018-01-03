@@ -38,7 +38,7 @@ const TestCase = props => {
         </h3>
       </div>
       <div className="project-table">
-        <h3>TEST CASES</h3>
+        <h3>TEST STEPS</h3>
         {teststeps}
       </div>
     </div>

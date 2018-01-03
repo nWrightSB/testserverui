@@ -13,14 +13,15 @@ class App extends Component {
       // USER AND SESSION VALUES
       current_user: null,
       current_pw: null,
-      test_server: 'http://10.0.29.207:8088',
+      test_server: 'http://10.0.30.175:8080',
       // VIEW DATA
       data_executions: null,
       data_project: null,
       data_executionID: null,
       data_testsuite: null,
       data_testcase: null,
-      data_teststep: null
+      data_teststep: null,
+      data_messages: null
     }
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
@@ -39,7 +40,9 @@ class App extends Component {
         this.setState({
           data_project: current_run,
           data_testsuite: null,
-          data_testcase: null
+          data_testcase: null,
+          data_teststep: null,
+          data_messages: null
         })
       }
     }
@@ -57,7 +60,9 @@ class App extends Component {
               this.setState({
                 data_testsuite: current_testsuite_run,
                 data_executionID: executionID,
-                data_testcase: null
+                data_testcase: null,
+                data_teststep: null,
+                data_messages: null
               })
             }
         }
@@ -72,14 +77,31 @@ class App extends Component {
       let current_testcase = data_testsuite["testCaseResultReports"][i]
       if (testcase_name === current_testcase["testCaseName"]) {
         this.setState({
-          data_testcase: current_testcase
+          data_testcase: current_testcase,
+          data_executionID: executionID,
+          data_teststep: null
         })
       }
     }
   }
 
-  handleTestStepDetails(teststep_name){
-    console.log(teststep_name)
+  handleTestStepDetails(teststep_name, transactionID, messages){
+    let reqObj = {
+      url: this.state.test_server + '/v1/readyapi/executions/' + this.state.data_executionID + "/transactions/" + transactionID,
+      auth: {
+          'user': this.state.current_user,
+          'pass': this.state.current_pw
+      }
+    };
+
+    request(reqObj, function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+          this.setState({
+            data_teststep: body,
+            data_messages: messages
+          })
+      }
+    }.bind(this));
   }
 
   handleLogin(username, password) {
@@ -120,7 +142,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">ts_UI</h1>
-          <h2>view</h2>
+          <h2>analyze</h2>
+          <h2>state</h2>
           <h2>run</h2>
           <Login
             current_user={this.state.current_user}
@@ -137,6 +160,7 @@ class App extends Component {
           data_executionID={this.state.data_executionID}
           data_testcase={this.state.data_testcase}
           data_teststep={this.state.data_teststep}
+          data_messages={this.state.data_messages}
           handleProjectDetails={this.handleProjectDetails}
           handleTestSuiteDetails={this.handleTestSuiteDetails}
           handleTestCaseDetails={this.handleTestCaseDetails}
